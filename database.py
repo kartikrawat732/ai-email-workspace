@@ -135,11 +135,18 @@ class DatabaseManager:
             with open(schema_path, "r", encoding="utf-8") as f:
                 schema_sql = f.read()
 
+            # Strip SQL comments to avoid breaking on semicolons inside comments
+            clean_lines = [
+                line for line in schema_sql.splitlines()
+                if not line.strip().startswith("--")
+            ]
+            clean_sql = "\n".join(clean_lines)
+
             # Execute statements
             with self.get_connection() as conn:
                 with conn.cursor() as cursor:
                     statements = [
-                        stmt.strip() for stmt in schema_sql.split(";") if stmt.strip()
+                        stmt.strip() for stmt in clean_sql.split(";") if stmt.strip()
                     ]
                     for stmt in statements:
                         cursor.execute(stmt)

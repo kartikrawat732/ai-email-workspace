@@ -1,0 +1,40 @@
+# Credentials & Sensitive Secrets
+credentials.json
+token.json
+.env
+ca.pem
+*.pem
+
+# Streamlit config / secrets
+.streamlit/secrets.toml
+
+# Python build & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
